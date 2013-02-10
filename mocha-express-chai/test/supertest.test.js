@@ -1,7 +1,7 @@
 describe("supertest suite", function() {
   it("testing with the help of super-agen", function(done) {
     user
-      .get('/')
+      .get('/hello')
       .end(function (res) {
         res.should.be.html;
         res.should.have.status(200);

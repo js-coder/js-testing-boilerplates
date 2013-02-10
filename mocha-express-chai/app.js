@@ -1,10 +1,14 @@
-var express = require("express");
- 
+var express = require('express');
+
+var index = require('./app/controllers/index');
+
 var app = express();
  
 // Config
-app.configure('development', function() {
+app.configure(function() {
   app.set('port', 8000);
+  app.set('views', __dirname + '/app/views');
+  app.set('view engine', 'jade');
 });
 
 app.configure('development', function() {
@@ -18,9 +22,7 @@ app.configure('test', function () {
 app.configure('production', function() {
 });
 
-app.get('/', function(req, res, next) {
-  res.send('Hello world!');
-})
+index.init(app);
 
 module.exports = app;
  

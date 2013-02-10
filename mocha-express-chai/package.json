@@ -4,7 +4,10 @@
     "private": true,
     "scripts": {
         "start": "node app.js",
-        "test": "node_modules/.bin/grunt test"
+        "test": "node_modules/.bin/mocha",
+        "blanket": {
+            "pattern": "/app/"
+        }
     },
     "author": "TODO",
     "main": "./app.js",
@@ -12,14 +15,18 @@
         "node":  ">=0.8.x"
     },
     "dependencies": {
-        "express": "3.x"
+        "express": "3.x",
+        "jade": "*"
     },
     "devDependencies": {
         "grunt": "*",
         "grunt-mocha-test": "*",
+        "grunt-exec": "*",
         "chai": "*",
         "mocha": "*",
         "zombie": "*",
-        "chai-supertest": "*"
+        "phantom": "*",
+        "chai-supertest": "*",
+        "blanket": ">= 1.0.3"
     }
 }

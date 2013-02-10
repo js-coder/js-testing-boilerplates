@@ -19,7 +19,16 @@ describe("zombie suite", function() {
     this.server.close(done);
   });
 
-  it("testing with the help of zombie", function() {
-    this.browser.success.should.be.true;
+  it("testing with the help of zombie", function(done) {
+    var browser = this.browser;
+    browser.success.should.be.true;
+    browser.text("title").should.eql('Hello world');
+    browser
+      .fill("email", "test@exmple.com")
+      .pressButton("Save", function() {
+        // Form submitted, new page loaded.
+        browser.success.should.be.true;
+        done();
+      })
   });
 });
